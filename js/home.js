@@ -81,13 +81,29 @@ document.getElementById("Quota").addEventListener("click", function (event) {
     const donation3 = getInputFieldValueByID("money3");
 
 
+
     if (!isNaN(donation3) && donation3 > 0) {
         const reserveMoney3 = getTextFieldValueById("reserve-field-3");
 
+        const myWallet = getTextFieldValueById('wallet')
 
         const updatedReserve3 = reserveMoney3 + donation3
+        const myBallance = myWallet - donation3
+        if (myBallance < 0) {
+            alert("not enough money in your AC")
+            return
+        }
 
-        document.getElementById("reserve-field-3").innerText = updatedReserve3
+        else{
+            document.getElementById("wallet").innerText = myBallance
+            document.getElementById("reserve-field-3").innerText = updatedReserve3
+        }
+       
+
+
+
+
+
     }
 
     else {
