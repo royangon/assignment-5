@@ -6,7 +6,7 @@ document.getElementById("flood-donate-noakhali").addEventListener("click", funct
     if (!isNaN(donation) && donation > 0) {
         const reserveMoney = getTextFieldValueById('reserve-field');
         const myWallet = getTextFieldValueById('wallet')
-        console.log(myWallet)
+
 
 
         const updatedReserve = reserveMoney + donation
@@ -46,11 +46,27 @@ document.getElementById("flood-donate-feni").addEventListener("click", function 
 
     if (!isNaN(donation2) && donation2 > 0) {
         const reserveMoney2 = getTextFieldValueById("reserve-field-2");
+        const myWallet = getTextFieldValueById('wallet')
 
 
         const updatedReserve2 = reserveMoney2 + donation2
+        const myBallance = myWallet - donation2
+        if (myBallance < 0) {
+            alert("not enough money in your AC")
+            return
+        }
+        else {
+            document.getElementById("wallet").innerText = myBallance
+            document.getElementById("reserve-field-2").innerText = updatedReserve2
+        }
 
-        document.getElementById("reserve-field-2").innerText = updatedReserve2
+
+
+
+
+
+
+
     }
 
     else {
